@@ -1,0 +1,67 @@
+function macros()
+{
+	#macro LINE_SPACING 57
+	#macro DEBUG_MODE 1
+
+	#macro SCORE_DOWN 0
+	#macro SCORE_UP 1
+
+	#macro MAX_ZONES 64
+
+	#macro FADE_DIR_DOWN -1
+	#macro FADE_DIR_UP 1
+
+	#macro VIRTUAL_WIDTH 1920
+	#macro VIRTUAL_HEIGHT 1080
+
+	#macro MAX_SPR_BACKGROUND 1024
+	#macro MAX_SPR_NORMAL 1024
+	#macro MAX_SPR_SORTED 1024
+	#macro MAX_SPR_TEXT_SPRITE 1024
+	#macro MAX_SPR_TEXT 1024
+	#macro SPR_BACKGROUND 0
+	#macro SPR_NORMAL 1
+	#macro SPR_SORTED 2
+	#macro SPR_TEXT_SPRITE 3
+	#macro SPR_TEXT 4
+
+	#macro MAX_CHANNELS 32
+
+	#macro GS_LOGOS 0
+	#macro GS_PREGAME 1
+	#macro GS_GAME 2
+
+	#macro MAX_NME_SHOTS 50
+	#macro MAX_SHOTS 50
+	#macro MAX_SCORES 24
+	#macro MAX_EXPLOS 24
+	#macro EXPLO_DELAY 1
+	
+	#macro SCROLL_SCREEN_W 2250
+	#macro SCROLL_SCREEN_H 1250
+	#macro SCROLL_W (SCROLL_SCREEN_W * 3)
+	#macro SCROLL_H (SCROLL_SCREEN_H * 1)
+	#macro SCROLL_BLOCK_W 125
+	#macro SCROLL_BLOCK_H 125
+	
+	#macro DX_ADJUST 1.25
+	#macro DY_ADJUST 1.25
+	#macro MAX_PLAYER_X_SPEED 16
+	#macro MAX_PLAYER_Y_SPEED 16
+	#macro PLAYER_W 106
+	#macro PLAYER_H 104
+	#macro PLAYER_SCALE_X 1.5
+	#macro PLAYER_SCALE_Y 1.5
+	
+	#macro SHOT_SCYTHE1 0
+	#macro SHOT_SCYTHE2 1
+
+	#macro BOSS_ENERGY = 10000
+	
+	#macro MAX_GHOSTS 25
+	#macro GHOST_ENERGY 150
+	#macro MIN_GHOST_DELAY 20
+	#macro MAX_GHOST_DELAY 90
+	#macro GHOST_SCALE_X 0.25
+	#macro GHOST_SCALE_Y 0.25
+}

@@ -1,0 +1,31 @@
+Converting GML script : ${project_dir}\scripts\scr_Sprite_AddBackground\scr_Sprite_AddBackground.gml
+Converted builtin : line 36 : obj.background_index = argument0 -> __background_set( e__BG.Index, 0, argument0 )
+
+Converting GML script : ${project_dir}\objects\obj_AdController\Create_0.gml
+Converted description : /// @description Initialise
+
+macOS icon ${options_dir}\mac\icons\icon512.png written out as 32-bit.
+Windows NSIS Installer Script has been set to default due to changes in GameMaker Studio 2.
+no audiogroup for sound: snd_ChangeType - setting to default audio group.
+no audiogroup for sound: snd_HitEdge - setting to default audio group.
+no audiogroup for sound: snd_HighScore - setting to default audio group.
+no audiogroup for sound: snd_GameOver - setting to default audio group.
+no audiogroup for sound: snd_LevelDone - setting to default audio group.
+no audiogroup for sound: snd_Move - setting to default audio group.
+no audiogroup for sound: snd_Pop - setting to default audio group.
+no audiogroup for sound: snd_Select - setting to default audio group.
+no audiogroup for sound: snd_HitSmilie - setting to default audio group.
+game speed set to 30
+added compatibility script action/action_set_alarm.gml
+added compatibility script background/draw_background_ext.gml
+added compatibility script background/__background_set.gml
+added compatibility script background/__background_set_internal.gml
+added compatibility script instance/instance_create.gml
+added compatibility script object/object_get_depth.gml
+added compatibility script action/__init_action.gml
+added compatibility script background/__init_background.gml
+added compatibility script __init_global.gml
+added compatibility script background/__background_get_element.gml
+added compatibility script background/__background_get_internal.gml
+added compatibility script background/__background_set_element.gml
+added compatibility script __global_object_depths.gml

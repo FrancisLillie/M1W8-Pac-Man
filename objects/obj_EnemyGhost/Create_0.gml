@@ -1,0 +1,16 @@
+x = 0;
+y = 0;
+fadingOut = false;
+fadingIn = false;
+stayOut = false;
+stayOutTimer = 0;
+transTimer = 0;
+hitPoints = 500;
+beenHit = false;
+hitTimer = 0;
+Active = false;
+Alpha = 1;
+FrameDelay = 0;
+Frame = 0;
+Timer = 0;
+attacking = false;
