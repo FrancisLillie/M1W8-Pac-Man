@@ -10,247 +10,89 @@ function scr_PlayerUpdate()
 {
 	// Declare locals.
 	
-	var iLoop, count;
-	var boundX, boundY;
+	var tObj;
 	
-	// Initialisation.
+	// Get the player object.
 	
-	boundX = (PLAYER_W * PLAYER_SCALE_X) / 2;
-	boundY = (PLAYER_H * PLAYER_SCALE_Y) / 2;
+	tObj = global.playerObj;
 	
-	//---------------------
-	// Exit if we are dead.
-	//---------------------
+	// Do literally nothing for pre-game.
 	
-	if (global.playerObj.Dead || global.monolithObj.hasBeenHit)
+	if (global.gameState == GS_PREGAME)
 	{
+		tObj.animFrameIndex = 2;
 		return;
 	}
 	
-	//---------------------
-	// Exploding animation.
-	//---------------------
+	// Update the animation frame index.
 	
-	if (global.playerObj.Exploding)
+	if (tObj.moving)
 	{
-		if (++global.playerObj.FrameDelay == 2)
+		tObj.animFrameIndex += 0.25;
+		if (tObj.animFrameIndex >= 2)
 		{
-			global.playerObj.FrameDelay = 0;
-			if (++global.playerObj.Frame == 17)
-			{
-				if (!global.cheatFlag)
-				{
-					global.playerObj.Frame = 0;
-					global.playerObj.Dead = true;
-					scr_Fade_InitDown(0.5);
-				}
-			}
-		}
-		return;
-	}
-	
-	//-------------------
-	// Flying animations.
-	//-------------------
-	
-	if (global.playerObj.Flying)
-	{
-		if (++global.playerObj.FrameDelay == 4)
-		{
-			global.playerObj.FrameDelay = 0;
-			if (++global.playerObj.Frame == 8)
-			{
-				global.playerObj.Frame = 0;
-				scr_Sound_Play(snd_Flap, 1, 1, false, true, false);
-			}
+			tObj.animFrameIndex-= 2;
 		}
 	}
 	
-	//---------------------------------
-	// Handle the shooting 1 animation.
-	//---------------------------------
+	// Move the player if it doesn't involve a collision.
 
-	if (global.playerObj.Shooting1)
-	{
-		if (++global.playerObj.FrameDelay == 2)
-		{
-			global.playerObj.FrameDelay = 0;
-			global.playerObj.Frame++;
-			if (global.playerObj.Frame == 3)
-			{
-				scr_ShotAddPlayer(global.playerObj.x, global.playerObj.y, SHOT_SCYTHE1);
-			}
-			else if (global.playerObj.Frame == 4)
-			{
-				global.playerObj.Frame = 0;
-				global.playerObj.Shooting1 = false;
-				global.playerObj.Flying = true;
-			}
-		}
-	}
+	dx = global.playerObj.dx * 5.87;
+	dy = global.playerObj.dy * 5.87;
 	
-	//---------------------------------
-	// Handle the shooting 2 animation.
-	//---------------------------------
-
-	if (global.playerObj.Shooting2)
+	if (scr_CanWeMove(tObj.x + dx, tObj.y + dy, tObj.dx, tObj.dy) == 0)
 	{
-		if (++global.playerObj.FrameDelay == 1)
-		{
-			global.playerObj.FrameDelay = 0;
-			global.playerObj.Frame++;
-			if (global.playerObj.Frame == 6)
-			{
-				scr_ShotAddPlayer(global.playerObj.x, global.playerObj.y, SHOT_SCYTHE2);
-			}
-			else if (global.playerObj.Frame == 11)
-			{
-				global.playerObj.Frame = 0;
-				global.playerObj.Shooting2 = false;
-				global.playerObj.Flying = true;
-			}
-		}
-	}
-
-	//-------------------------------
-	// Handle the scrolling/movement.
-	//-------------------------------
-
-	// Keep up with scrolling.
-	
-	if (global.scrollX[5] < ((SCROLL_SCREEN_W * 3) - room_width))
-	{
-		global.playerObj.x += 6;
-	}
-	
-	// Now handle X control.
-	
-	if (keyboard_check(vk_right))
-	{
-		global.playerObj.dx += DX_ADJUST;
-		if (global.playerObj.dx >= MAX_PLAYER_X_SPEED)
-		{
-			global.playerObj.dx = MAX_PLAYER_X_SPEED;
-		}
-	}
-	else if (keyboard_check(vk_left))
-	{
-		global.playerObj.dx -= DX_ADJUST;
-		if (global.playerObj.dx <= -MAX_PLAYER_X_SPEED)
-		{
-			global.playerObj.dx = -MAX_PLAYER_X_SPEED;
-		}
+		global.playerObj.x += dx;
+		global.playerObj.y += dy;
+		tObj.moving = true;
 	}
 	else
 	{
-		if (global.playerObj.dx < 0)
-		{
-			global.playerObj.dx += DX_ADJUST;
-			if (global.playerObj.dx >= 0)
-			{
-				global.playerObj.dx = 0;
-			}
-		}
-		else if (global.playerObj.dx > 0)
-		{
-			global.playerObj.dx -= DX_ADJUST;
-			if (global.playerObj.dx <= 0)
-			{
-				global.playerObj.dx = 0;
-			}
-		}
+		global.playerObj.x = ((global.playerObj.x div 32) * 32) + 16;
+		global.playerObj.y = ((global.playerObj.y div 32) * 32) + 16;
+		tObj.moving = false;
 	}
 	
-	// Update x position from deltas.
+	// Handle change of direction.
 	
-	global.playerObj.x += global.playerObj.dx;
-	
-	// Clip X position.
-	
-	if (global.playerObj.x <= (global.scrollX[5] + boundX))
+	if (keyboard_check(vk_left) && global.playerObj.dx != -1)
 	{
-		global.playerObj.x = (global.scrollX[5] + boundX);
-		global.playerObj.dx = 0;
-	}
-	if (global.playerObj.x >= ((global.scrollX[5] + room_width) - boundX))
-	{
-		global.playerObj.x = ((global.scrollX[5] + room_width) - boundX);
-		global.playerObj.dx = 0;
-	}
-
-	// Now handle Y control.
-	
-	if (keyboard_check(vk_up))
-	{
-		global.playerObj.dy -= DY_ADJUST;
-		if (global.playerObj.dy <= -MAX_PLAYER_Y_SPEED)
+		if (scr_IsMoveValid(tObj.x, tObj.y, -1, 0) == 0)
 		{
-			global.playerObj.dy = -MAX_PLAYER_Y_SPEED;
+			tObj.dx = -1;
+			tObj.dy = 0;
+			global.playerObj.x = ((global.playerObj.x div 32) * 32) + 16;
+			global.playerObj.y = ((global.playerObj.y div 32) * 32) + 16;
 		}
 	}
-	else if (keyboard_check(vk_down))
+	else if (keyboard_check(vk_right) && global.playerObj.dx != 1)
 	{
-		global.playerObj.dy += DY_ADJUST;
-		if (global.playerObj.dy >= MAX_PLAYER_Y_SPEED)
+		if (scr_IsMoveValid(tObj.x, tObj.y, 1, 0) == 0)
 		{
-			global.playerObj.dy = MAX_PLAYER_Y_SPEED;
+			tObj.dx = 1;
+			tObj.dy = 0;
+			global.playerObj.x = ((global.playerObj.x div 32) * 32) + 16;
+			global.playerObj.y = ((global.playerObj.y div 32) * 32) + 16;
 		}
 	}
-	else
+	else if (keyboard_check(vk_up) && global.playerObj.dy != -1)
 	{
-		if (global.playerObj.dy < 0)
+		if (scr_IsMoveValid(tObj.x, tObj.y, 0, -1) == 0)
 		{
-			global.playerObj.dy += DY_ADJUST;
-			if (global.playerObj.dy >= 0)
-			{
-				global.playerObj.dy = 0;
-			}
-		}
-		else if (global.playerObj.dy > 0)
-		{
-			global.playerObj.dy -= DY_ADJUST;
-			if (global.playerObj.dy <= 0)
-			{
-				global.playerObj.dy = 0;
-			}
+			tObj.dx = 0;
+			tObj.dy = -1;
+			global.playerObj.x = ((global.playerObj.x div 32) * 32) + 16;
+			global.playerObj.y = ((global.playerObj.y div 32) * 32) + 16;
 		}
 	}
-	
-	// Update x position from deltas.
-	
-	global.playerObj.y += global.playerObj.dy;
-
-	// Clip Y position.
-	
-	if (global.playerObj.y <= (170 + boundY))
+	else if (keyboard_check(vk_down) && global.playerObj.dy != 1)
 	{
-		global.playerObj.y = (170 + boundY);
-		global.playerObj.dy = 0;
-	}
-	if (global.playerObj.y >= (SCROLL_H - boundY))
-	{
-		global.playerObj.y = (SCROLL_H - boundY);
-		global.playerObj.dy = 0;
-	}
-	
-	//--------------------
-	// Do we want to fire?
-	//--------------------
-	
-	if (global.playerObj.Flying && keyboard_check(ord("Z")))
-	{
-		global.playerObj.Flying = false;
-		global.playerObj.Shooting1 = true;
-		global.playerObj.Shooting2 = false;
-		global.playerObj.Frame = 0;
-		global.playerObj.FrameDelay = 0;
-	}
-	if (global.playerObj.Flying && keyboard_check(ord("X")))
-	{
-		global.playerObj.Flying = false;
-		global.playerObj.Shooting1 = false;
-		global.playerObj.Shooting2 = true;
-		global.playerObj.Frame = 0;
-		global.playerObj.FrameDelay = 0;
+		if (scr_IsMoveValid(tObj.x, tObj.y, 0, 1) == 0)
+		{
+			tObj.dx = 0;
+			tObj.dy = 1;
+			global.playerObj.x = ((global.playerObj.x div 32) * 32) + 16;
+			global.playerObj.y = ((global.playerObj.y div 32) * 32) + 16;
+		}
 	}
 }

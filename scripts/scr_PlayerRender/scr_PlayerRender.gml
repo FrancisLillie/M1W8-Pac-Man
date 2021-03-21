@@ -10,41 +10,33 @@ function scr_PlayerRender()
 {
 	// Declare locals.
 	
-	var lx, ly, lFrame, lSpr;
+	var lFrame;
 	
-	// Don't render if we are dead.
+	// Draw the player.
 	
-	if (global.playerObj.Dead)
+	switch (global.gameState)
 	{
-		return;
+		case GS_PREGAME:
+			lFrame = 2;
+			break;
+		case GS_GAME:
+			if (global.playerObj.dx == -1)
+			{
+				lFrame = global.lFrames[global.playerObj.animFrameIndex];
+			}
+			else if (global.playerObj.dx == 1)
+			{
+				lFrame = global.rFrames[global.playerObj.animFrameIndex];
+			}
+			else if (global.playerObj.dy == -1)
+			{
+				lFrame = global.uFrames[global.playerObj.animFrameIndex];
+			}
+			else
+			{
+				lFrame = global.dFrames[global.playerObj.animFrameIndex];
+			}
+			break;
 	}
-	
-	// Set up x, y and frame.
-	
-	lx = global.playerObj.x - global.scrollX[5];
-	ly = global.playerObj.y - global.scrollY[5];
-	lFrame = global. playerObj.Frame;
-	
-	// What are we doing?
-	
-	if (global.playerObj.Exploding)
-	{
-		lSpr = spr_PlayerDie;
-	}
-	else if (global.playerObj.Flying)
-	{
-		lSpr = spr_PlayerFly;
-	}
-	else if (global.playerObj.Shooting1)
-	{
-		lSpr = spr_PlayerAttack1;
-	}
-	else if (global.playerObj.Shooting2)
-	{
-		lSpr = spr_PlayerAttack2;
-	}
-	
-	// Now we can display the sprite.
-	
-	scr_Sprite_AddSorted(lx, ly, 10, 0, 0, PLAYER_SCALE_X, PLAYER_SCALE_Y, 0, 1, lFrame, lSpr, c_white, SPR_SORTED, true, false, false);
+	scr_Sprite_AddSorted(global.playerObj.x, global.playerObj.y, 10, 0, 0, 1, 1, 0, 1, lFrame, spr_PacMan, c_white, true, false, false);
 }

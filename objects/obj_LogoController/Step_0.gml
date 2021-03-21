@@ -12,7 +12,7 @@ scr_Screen_GetAspect();
 switch (logoNum)
 {
     case 0:
-        scr_Sprite_AddNormal(0, 0, 0, 0, 0, 1, 1, 0, 1, 0, spr_Logo, c_white, SPR_NORMAL, true, false, false);
+        scr_Sprite_AddNormal(0, 0, 0, 0, 0, 1, 1, 0, 1, 0, spr_Logo, c_white, true, false, false);
         break;
 }
 

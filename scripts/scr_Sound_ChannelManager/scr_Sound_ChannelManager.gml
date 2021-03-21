@@ -1,12 +1,13 @@
-function scr_Sound_ChannelManager() {
-	//-----------------------------------------------------------------------------
-	// scr_Sound_ChannelManager
-	//-----------------------------------------------------------------------------
-	// Inputs   -   None
-	// Outputs  -   None
-	// Notes    -   Manages the channels of audio
-	//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// scr_Sound_ChannelManager
+//-----------------------------------------------------------------------------
+// Inputs   -   None
+// Outputs  -   None
+// Notes    -   Manages the channels of audio
+//-----------------------------------------------------------------------------
 
+function scr_Sound_ChannelManager()
+{
 	// Declare locals.
 
 	var iLoop;
@@ -44,6 +45,4 @@ function scr_Sound_ChannelManager() {
 	        }
 	    }
 	}
-
-
 }

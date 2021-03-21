@@ -8,17 +8,15 @@
 
 function scr_OverlaysRender()
 {
-	// Declare locals.
+	// Not really an overlay, but render the background.
 	
-	var lString;
+	scr_Sprite_AddNormal(0, 0, 0, 0, 0, 1, 1, 0, 1, 0, spr_Screen, c_white, true, false, false);
 	
-	// Display the score.
+	// Display high score text.
 	
-	lString = string(global.Score);
-	scr_Font_Print_Sprite(lString, 16, 16, 1, 1, 1, 1, c_white, 1, 0, fa_left, fa_top);
-
-	// Display the level.
-
-	lString = "L" + string(global.Level);
-	scr_Font_Print_Sprite(lString, room_width - 16, 16, 1, 1, 1, 1, c_white, 1, 0, fa_right, fa_top);
+	scr_Font_Print_Sprite("HIGH SCORE", 288, 0, 1, 1, 1, 1, c_white, 1, 0, fa_left, fa_top);
+	if (global.playerScore >= global.highScore)
+	{
+		scr_Font_Print_Sprite(string(global.playerScore), 544, 32, 1, 1, 1, 1, c_white, 1, 0, fa_right, fa_top);
+	}
 }

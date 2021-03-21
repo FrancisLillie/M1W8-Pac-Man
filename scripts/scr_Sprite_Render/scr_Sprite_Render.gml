@@ -14,7 +14,6 @@ function scr_Sprite_Render()
 	var iLoop;
 	var Sorted;
 	var obj1, obj2, obj3;
-	var x1, y1, x2, y2, pc;
 
 	// Update the global tick counter.
 
@@ -91,16 +90,4 @@ function scr_Sprite_Render()
 	// Draw the zones.
 
 	scr_Zone_Draw();
-
-	// Draw the health bar.
-	
-	if (global.gameState == GS_GAME)
-	{
-		x1 = (room_width / 2) - 50;
-		x2 = x1 + 100;
-		y1 = room_height - 32;
-		y2 = room_height - 16;
-		pc = (global.playerObj.Energy / 1000) * 100;
-		draw_healthbar(x1, y1, x2, y2, pc, c_black, c_red, c_green, 0, true, true);
-	}
 }

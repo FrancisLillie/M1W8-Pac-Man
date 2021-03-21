@@ -33,41 +33,27 @@ function scr_ProcessGame()
 	// Game logic with matching renders.
 	//------------------------------------------------------------------------------
 
-	scr_BackgroundUpdate();
+	scr_PreGameUpdate();
 	scr_PlayerUpdate();
-	scr_ShotUpdatePlayer();
-	scr_ShotUpdateEnemy();
-	scr_EnemyGhostUpdate();
-	scr_ExplosionUpdate();
 	scr_OverlaysUpdate();
-	scr_MonolithUpdate();
+	scr_PillsUpdate();
 
 	//------------------------------------------------------------------------------
 	// Game logic with no render.
 	//------------------------------------------------------------------------------
 
-	scr_ShakeProcess();
-
 	//------------------------------------------------------------------------------
 	// Game rendering with matching logic.
 	//------------------------------------------------------------------------------
 
-	scr_BackgroundRender();
+	scr_PreGameRender();
 	scr_PlayerRender();
-	scr_ShotRenderPlayer();
-	scr_ShotRenderEnemy();
-	scr_EnemyGhostRender();
-	scr_ExplosionRender();
 	scr_OverlaysRender();
-	scr_MonolithRender();
+	scr_PillsRender();
 	
 	//------------------------------------------------------------------------------
 	// Collision detection.
 	//------------------------------------------------------------------------------
-
-	scr_PlayerShotToGhost();
-	scr_GhostShotToPlayer();
-	scr_PlayerToMonolith();
 
 	//------------------------------------------------------------------------------
 	// Check zone stuff.

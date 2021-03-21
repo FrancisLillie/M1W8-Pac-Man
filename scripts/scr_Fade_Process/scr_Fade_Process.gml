@@ -39,12 +39,6 @@ function scr_Fade_Process()
 	            }
 	            else
 	            {
-					if (global.monolithObj.hasBeenHit)
-					{
-						global.Level++;
-						scr_InitLevel(global.Level, false);
-						scr_Fade_InitUp(1);
-					}
 	            }
 	        }
         
@@ -52,11 +46,6 @@ function scr_Fade_Process()
         
 	        if (!fadeActive)
 	        {
-				if (global.playerObj.Dead)
-				{
-	                scr_InitLevel(global.Level, false);
-	                scr_Fade_InitUp(1);
-				}
 	        }
 	    }
 	}

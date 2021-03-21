@@ -8,4 +8,22 @@
 
 function scr_PreGameUpdate()
 {
+	// Wait for fade to finish.
+	
+	if (!global.fadeActive && global.gameState == GS_PREGAME && !global.preGameSoundPlayed)
+	{
+		global.preGameSoundPlayed = true;
+		scr_Sound_Play(snd_PreGame, 1, 1, false, true, true);
+	}
+	else if (!global.fadeActive && global.gameState == GS_PREGAME && global.preGameSoundPlayed)
+	{
+		if (++global.preGameDelay >= (room_speed * 4.2))
+		{
+			global.gameState = GS_GAME;
+			global.preGameDelay = 0;
+			global.playerObj.animFrameIndex = 0;
+			global.playerObj.dx = -1;
+			global.playerObj.dy = 0;
+		}
+	}
 }		

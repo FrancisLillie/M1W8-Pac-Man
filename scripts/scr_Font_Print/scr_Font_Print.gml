@@ -1,31 +1,29 @@
 //-----------------------------------------------------------------------------
 // scr_Font_Print
 //-----------------------------------------------------------------------------
-// Inputs   -   Text string to print    (arg0)
-//          -   X position              (arg1)
-//          -   Y position              (arg2)
-//          -   X scale                 (arg3)
-//          -   Y scale                 (arg4)
-//          -   Angle of text           (arg5)
-//          -   Colour for TL           (arg6)
-//          -   Colour for TR           (arg7)
-//          -   Colour for BR           (arg8)
-//          -   Colour for BL           (arg9)
-//          -   Alpha                   (arg10)
-//          -   Font to use             (arg11)
-//          -   H alignment to use      (arg12)
-//          -   V alignment to use      (arg13)
-//          -   Y offset                (arg14)
-//          -   Maximum width           (arg15)
+// Inputs   -   Text string to print
+//          -   X position
+//          -   Y position
+//          -   X scale
+//          -   Y scale
+//          -   Angle of text
+//          -   Colour for TL
+//          -   Colour for TR
+//          -   Colour for BR
+//          -   Colour for BL
+//          -   Alpha
+//          -   Font to use
+//          -   H alignment to use
+//          -   V alignment to use
+//          -   Y offset
+//          -   Maximum width
 //-----------------------------------------------------------------------------
 
 function scr_Font_Print(nString, nx, ny, nXScale, nYScale, nAngle, colTL, colTR, colBR, colBL, nAlpha, nFont, nHAlign, nVAlign, nYOffset, nMaxW)
 {
-
 	// Declare locals.
 
 	var txtW, txtH;
-	var x1, x2, y1, y2;
 
 	// Set up the correct font and alignment.
 
@@ -53,6 +51,4 @@ function scr_Font_Print(nString, nx, ny, nXScale, nYScale, nAngle, colTL, colTR,
 	    txtW = string_width_ext(string_hash_to_newline(nString), -1, -1);
 	    txtH = string_height_ext(string_hash_to_newline(nString), -1, -1);
 	}
-
-
 }

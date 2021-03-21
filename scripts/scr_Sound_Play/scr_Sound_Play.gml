@@ -115,6 +115,4 @@ function scr_Sound_Play(nSound, nPri, nVolume, nLooped, nFades, nOnlyOne)
 	// Now return the status.
 
 	return soundPlayed;
-
-
 }

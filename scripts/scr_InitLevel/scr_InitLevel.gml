@@ -9,8 +9,9 @@
 
 function scr_InitLevel(nLevel, nStart)
 {
-
 	// Declare locals.
+	
+	var pillsFound;
 
 	// Make sure a paint is not possible.
 
@@ -26,19 +27,8 @@ function scr_InitLevel(nLevel, nStart)
 
 	if (nStart)
 	{
-		global.Score = 0;
+		global.playerScore = 0;
 		global.Level = 1;
-	}
-
-	// Set up scroll psoitions.
-	
-	global.scrollX = array_create(6);
-	global.scrollY = array_create(6);
-
-	for (iLoop = 0; iLoop < 6; iLoop++)
-	{
-		global.scrollX[iLoop] = 0
-		global.scrollY[iLoop] = 170;
 	}
 
 	// Set up the player.
@@ -49,62 +39,57 @@ function scr_InitLevel(nLevel, nStart)
 	}
 	global.playerObj = instance_create_depth(0, 0, 0, obj_Player);
 	
-	global.playerObj.x = 64;
-	global.playerObj.y = 170 + (room_height / 2);
-	global.playerObj.dx = 0;
+	global.playerObj.cx = 14;
+	global.playerObj.cy = 26;
+	global.playerObj.x = (global.playerObj.cx * 32);
+	global.playerObj.y = (global.playerObj.cy * 32) + 16;
+	global.playerObj.dx = -1;
 	global.playerObj.dy = 0;
-	global.playerObj.Frame = 0;
-	global.playerObj.FrameDealy = 0;
-	global.playerObj.FireDelay = 0
-	global.playerObj.FireDelayMaster = 15;
-	global.playerObj.Exploding = false;
-	global.playerObj.Energy = 1000;
-	global.playerObj.Dead = false;
+	global.playerObj.animFrameIndex = 2;
+	global.playerObj.moving = false;
+	
+	global.playerScore = 0;
+	global.highScore = 0;
+	
+	// Set up anim tables.
+	
+	global.lFrames[0] = 4;
+	global.lFrames[1] = 3;
 
-	global.FireDelay = 10;
+	global.rFrames[0] = 0;
+	global.rFrames[1] = 1;
+
+	global.uFrames[0] = 5;
+	global.uFrames[1] = 6;
+
+	global.dFrames[0] = 7;
+	global.dFrames[1] = 8;
 	
-	global.ghostDelay = irandom_range(MIN_GHOST_DELAY, MAX_GHOST_DELAY);
+	// Set up the level from the master data.
 	
-	global.bossActive = false;
-	global.bossDestroyed = false;
-	global.bossEnergy BOSS_ENERGY;
-	
-	global.shakeDuration = 0;
-	global.shakeMagnitude = 0;
-	global.shakeX = 0;
-	global.shakeY = 0;
-	
-	// Set up the monolith.
-	
-	if (global.monolithObj != 0)
+	pillsFound = 0;
+	for (yLoop = 0; yLoop < 36; yLoop++)
 	{
-		instance_destroy(global.monolithObj);
+		for (xLoop = 0; xLoop < 28; xLoop++)
+		{
+			global.levelData[yLoop, xLoop] = global.levelMaster[yLoop, xLoop];
+			if (global.levelData[yLoop, xLoop] == 2 || global.levelData[yLoop, xLoop] == 3)
+			{
+				global.pillArray[pillsFound] = instance_create_depth(-64, -64, -10000, obj_Pill);
+				pillsFound++;
+			}
+		}
 	}
-	global.monolithObj = instance_create_depth(0, 0, 0, obj_Monolith);
-	
-	global.monolithObj.sinOffset = 0;
-	global.monolithObj.yAdjust = 0;
-	global.monolithObj.x = SCROLL_W - 100;
-	global.monolithObj.y = 170 + (room_height / 2);
-	global.monolithObj.lightningWait = irandom_range(room_speed * 1, room_speed * 5);
-	global.monolithObj.lightningActive = false;
-	global.monolithObj.frameNum = 0;
-	global.monolithObj.hasBeenHit = false;
 
-	// Kill all objects.
+	// Initialise the pills.
 	
-	scr_ShotKillAll();
-	scr_EnemyGhostKillAll();
-	scr_ExplosionKillAll();
-	
-	// Set up cheating.
-	
-	cheatFlag = false;
-	
-	// Play music.
-	
-	scr_Sound_Play(snd_BGM, 1, 0.25, true, true, true);
+	scr_PillsInitialise();
 
+	// Various setup.
+	
+	global.preGameSoundPlayed = false;
+	global.preGameDelay = 0;
+	
 	// Make sure a paint is now possible.
 
 	global.SettingUp = false;

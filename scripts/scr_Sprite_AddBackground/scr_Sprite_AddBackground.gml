@@ -12,11 +12,12 @@
 //          -   Screen space flag       (arg8)
 //-----------------------------------------------------------------------------
 
-function scr_Sprite_AddBackground(argument0, argument1, argument2, argument3, argument4, argument5, argument6, argument7, argument8) {
+function scr_Sprite_AddBackground(argument0, argument1, argument2, argument3, argument4, argument5, tCol, tAlpha, screenSpace)
+{
 
 	// Adjust x and y based on screen space flag.
 
-	if (argument8 == true)
+	if (screenSpace == true)
 	{
 	    argument1 = (argument1 + global.virtualOffsetX) * global.virtualToScreenScaleX;
 	    argument2 = (argument2 + global.virtualOffsetY) * global.virtualToScreenScaleY;
@@ -41,9 +42,9 @@ function scr_Sprite_AddBackground(argument0, argument1, argument2, argument3, ar
 	obj.image_xscale = argument3;
 	obj.image_yscale = argument4;
 	obj.image_angle = argument5;
-	obj.colour = argument6;
-	obj.image_alpha = argument7;
-	obj.inScreenSpace = argument8;
+	obj.colour = tCol;
+	obj.image_alpha = tAlpha;
+	obj.inScreenSpace = screenSpace;
 	obj.list = SPR_BACKGROUND;
 
 	// Now add the object to an array.

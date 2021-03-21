@@ -1,25 +1,24 @@
 //-----------------------------------------------------------------------------
 // scr_Sprite_AddNormal
 //-----------------------------------------------------------------------------
-// Inputs   -   X position      (arg0)
-//          -   Y position      (arg1)
-//          -   Z position      (arg2)
-//          -   X handle        (arg3)
-//          -   Y handle        (arg4)
-//          -   X scale         (arg5)
-//          -   Y scale         (arg6)
-//          -   Rotation        (arg7)
-//          -   Alpha           (arg8)
-//          -   Frame           (arg9)
-//          -   Sprite name     (arg10)
-//          -   Colour          (arg11)
-//          -   List to add to  (arg12)
-//          -   Screen space    (arg13)
-//          -   X flip          (arg14)
-//          -   Y flip          (arg15)
+// Inputs   -   X position
+//          -   Y position
+//          -   Z position
+//          -   X handle
+//          -   Y handle
+//          -   X scale
+//          -   Y scale
+//          -   Rotation
+//          -   Alpha
+//          -   Frame
+//          -   Sprite name
+//          -   Colour
+//          -   Screen space
+//          -   X flip
+//          -   Y flip
 //-----------------------------------------------------------------------------
 
-function scr_Sprite_AddNormal(nx, ny, nz, nxh, nyh, nXScale, nYScale, nRot, nAlpha, nFrame, nSprName, nColor, nList, nScreenSpace, nXFlip, nYFlip)
+function scr_Sprite_AddNormal(nx, ny, nz, nxh, nyh, nXScale, nYScale, nRot, nAlpha, nFrame, nSprName, nColor, nScreenSpace, nXFlip, nYFlip)
 {
 	// Declare locals.
 
@@ -77,8 +76,10 @@ function scr_Sprite_AddNormal(nx, ny, nz, nxh, nyh, nXScale, nYScale, nRot, nAlp
 	obj.image_index = nFrame;
 	obj.sprite_index = nSprName;
 	obj.colour = nColor;
-	obj.list = nList;
+	obj.list = SPR_NORMAL;
 	obj.inScreenSpace = nScreenSpace;
+	obj.xFlip = nXFlip;
+	obj.yFlip = nYFlip;
 
 	// Now add the object to an array.
 

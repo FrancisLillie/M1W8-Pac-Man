@@ -156,7 +156,7 @@ function scr_Font_Print_Sprite(nString, nx, ny, xScale1, yScale1, xScale2, yScal
 	        {
 	            if (char != 32)
 	            {
-	                scr_Sprite_AddTextSprite(dx, dy, 0, 0, 0, scaleX, scaleY, 0, nAlpha, char - thisFont.firstChar, thisFont.sprName, nColour, SPR_TEXT_SPRITE, false);
+	                scr_Sprite_AddTextSprite(dx, dy, 0, 0, 0, scaleX, scaleY, 0, nAlpha, char - thisFont.firstChar, thisFont.sprName, nColour, false);
 	            }
 	        }
 

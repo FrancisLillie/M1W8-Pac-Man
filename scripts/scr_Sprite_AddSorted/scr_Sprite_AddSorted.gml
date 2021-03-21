@@ -13,13 +13,12 @@
 //          -   Frame
 //          -   Sprite name
 //          -   Colour
-//          -   List to add to
 //          -   Screen space
 //          -   X flip
 //          -   Y flip
 //-----------------------------------------------------------------------------
 
-function scr_Sprite_AddSorted(nx, ny, nz, nxh, nyh, nxs, nys, nRot, nAlpha, nSprFrame, nSprName, nCol, nList, nScreen, nxf, nyf)
+function scr_Sprite_AddSorted(nx, ny, nz, nxh, nyh, nxs, nys, nRot, nAlpha, nSprFrame, nSprName, nCol, nScreen, nxf, nyf)
 {
 
 	// Declare locals.
@@ -78,7 +77,7 @@ function scr_Sprite_AddSorted(nx, ny, nz, nxh, nyh, nxs, nys, nRot, nAlpha, nSpr
 	obj.image_index = nSprFrame;
 	obj.sprite_index = nSprName;
 	obj.colour = nCol;
-	obj.list = nList;
+	obj.list = SPR_SORTED;
 	obj.inScreenSpace = nScreen;
 
 	// Now add the object to an array.

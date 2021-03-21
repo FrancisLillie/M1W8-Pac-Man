@@ -23,23 +23,18 @@ function scr_GlobalsGame()
 	globalvar nextGameState;
 	globalvar gameState, gameType;
 	
-	globalvar scrollX, scrollY;
-	
 	globalvar playerObj;
-	globalvar shotGrid, nmeShotGrid, ghostGrid;
-	globalvar ghostDelay;
 	
-	globalvar bossActive, bossDestroyed, bossEnergy;
-	globalvar bossHit, bossHitTimer;
+	globalvar lFrames;
+	globalvar rFrames;
+	globalvar uFrames;
+	globalvar dFrames;
 	
-	globalvar exploGrid;
+	globalvar playerScore, highScore;
 	
-	globalvar shakeDuration, shakeMagnitude;
-	globalvar shakeX, shakeY;
+	globalvar preGameSoundPlayed, preGameDelay;
 	
-	globalvar monolithObj;
-	
-	globalvar cheatFlag;
+	globalvar pillArray;
 
 	//-----------------------
 	// Logo system variables.
@@ -52,4 +47,9 @@ function scr_GlobalsGame()
 	//------------
 
 	globalvar gameStrings;
+	
+	// Game level data.
+	
+	globalvar levelMaster;
+	globalvar levelData;
 }
