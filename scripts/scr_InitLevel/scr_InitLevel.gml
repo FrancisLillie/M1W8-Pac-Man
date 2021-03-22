@@ -12,10 +12,13 @@ function scr_InitLevel(nLevel, nStart)
 	// Declare locals.
 	
 	var pillsFound;
+	var iLoop;
 
 	// Make sure a paint is not possible.
 
 	global.SettingUp = true;
+
+	global.masterVolume = 0;
 
 	// Miscellaneous variable initialisation.
 
@@ -80,10 +83,21 @@ function scr_InitLevel(nLevel, nStart)
 			}
 		}
 	}
+	
+	// Set up words array.
+	
+	for (iLoop = 0; iLoop < MAX_WORDS; iLoop++)
+	{
+		global.wordArray[iLoop] = instance_create_depth(-64, -64, -10000, obj_Words);
+	}
 
 	// Initialise the pills.
 	
 	scr_PillsInitialise();
+	
+	// Initialise the words.
+	
+	scr_WordsInitialise();
 
 	// Various setup.
 	

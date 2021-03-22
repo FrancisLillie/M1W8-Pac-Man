@@ -17,12 +17,16 @@ function scr_PillsUpdate()
 	var needABadOne;
 	var dx, dy, dist;
 	var changedState;
-	var count;
+	var count, newBadIndex;
 	
 	// Intitialisation.
 	
 	numEntries = array_length_1d(global.pillArray);
 	needABadOne = false;
+	
+	// Update the pill waka delay.
+	
+	if (--global.pillWakaDelay < 0) global.pillWakaDelay = 0;
 	
 	//---------------------------------------------------------
 	// Find out how many we have active, and how mnay good/bad.
@@ -52,9 +56,11 @@ function scr_PillsUpdate()
 	
 	// Get a percentage of bad.
 	
-	pcBad = (100 / numActive) * numBad;
-	if (pcBad < 10) needABadOne = true;
-	
+	if (numActive != 0)
+	{
+		pcBad = (100 / numActive) * numBad;
+		if (pcBad < 5) needABadOne = true;
+	}
 	
 	//-------------------------------
 	// Now actually process them all.
@@ -98,10 +104,23 @@ function scr_PillsUpdate()
 			if (dist < 24)
 			{
 				tObj.pillActive = false;
-				scr_Sound_Play(snd_WakaWaka, 1, 1, false, true, false);
+				if (global.pillWakaDelay == 0)
+				{
+					scr_Sound_Play(snd_WakaWaka, 1, 1, false, true, false);
+					global.pillWakaDelay = 17;
+				}
 				global.playerScore += tObj.pillScore;
 				if (global.playerScore < 0) global.playerScore = 0;
 				numActive--;
+				
+				if (tObj.pillType == PILL_GOOD)
+				{
+					scr_WordsAdd(tObj.x, tObj.y, true);
+				}
+				else
+				{
+					scr_WordsAdd(tObj.x, tObj.y, false);
+				}
 			}
 		}
 	}
@@ -110,19 +129,35 @@ function scr_PillsUpdate()
 	// Add a bad one if needed.
 	//-------------------------
 	
-	newBadIndex = random_range(0, numEntries - 1);
-	changedState = false;
-	count = 0;
-	while (!changedState)
+	if (needABadOne)
 	{
-		tObj = global.pillArray[newBadIndex];
-		if (tObj.pillActive && tObj.pillType == PILL_GOOD)
+		newBadIndex = irandom_range(0, numEntries - 1);
+		changedState = false;
+		count = 0;
+		while (!changedState)
 		{
-			tObj.pillType = PILL_BAD;
-			tObj.pillScore = -10;
-			tObj.pillFrame = 0;
-			tObj.pillTargetFrame = 17;
+			tObj = global.pillArray[newBadIndex];
+			if (tObj.pillActive && tObj.pillType == PILL_GOOD)
+			{
+				tObj.pillType = PILL_BAD;
+				tObj.pillScore = -10;
+				tObj.pillFrame = 0;
+				tObj.pillTargetFrame = 16;
+				changedState = true;
+			}
+			else
+			{
+				newBadIndex++;
+				if (newBadIndex >= numActive)
+				{
+					newBadIndex = 0;
+				}
+				count++;
+				if (count == numActive)
+				{
+					changedState = true;
+				}
+			}
 		}
 	}
-	
 }

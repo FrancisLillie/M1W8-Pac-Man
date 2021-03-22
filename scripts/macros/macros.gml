@@ -32,5 +32,7 @@ function macros()
 	#macro PILL_BAD 1
 	#macro PILL_SEROTONIN 2
 	
-	#macro DEFAULT_SPEED = ((11 * 8) * 4) / 60
+	#macro DEFAULT_SPEED 3.6
+	
+	#macro MAX_WORDS 32
 }

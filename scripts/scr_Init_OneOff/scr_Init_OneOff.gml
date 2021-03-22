@@ -52,6 +52,52 @@ function scr_Init_OneOff()
 	
 	global.playerObj = instance_create_depth(0, 0, 0, obj_Player);
 	
+	// Create the bad words.
+	
+	global.badWords[0] = "I HATE YOU!";
+	global.badWords[1] = "YOU'RE HORRIBLE!";
+	global.badWords[2] = "GO AWAY!";
+	global.badWords[3] = "NO-ONE LIKES YOU!";
+	global.badWords[4] = "YOU SMELL!";
+	global.badWords[5] = "STUPID!";
+	global.badWords[6] = "UGLY!";
+	global.badWords[7] = "FAT!";
+	global.badWords[8] = "THICK!";
+	global.badWords[9] = "POOR!";
+	global.badWords[10] = "LONER!";
+	global.badWords[11] = "DISAPPOINTMENT!";
+	global.badWords[12] = "WEIRDO!";
+	global.badWords[13] = "BURDEN!";
+	global.badWords[14] = "NAZI!";
+	global.badWords[15] = "HOPELESS!";
+	global.badWords[16] = "HAPLESS!";
+	global.badWords[17] = "GORMLESS!";
+	global.badWords[18] = "IDIOT!";
+	global.badWords[19] = "FREAK!";
+	
+	// Create the bad words.
+	
+	global.goodWords[0] = "BRILLIANT!";
+	global.goodWords[1] = "WELL DONE!";
+	global.goodWords[2] = "THANKS!";
+	global.goodWords[3] = "PRETTY!";
+	global.goodWords[4] = "CLEVER!";
+	global.goodWords[5] = "AWESOME!";
+	global.goodWords[6] = "LOVE YOU!";
+	global.goodWords[7] = "BEST MATE!";
+	global.goodWords[8] = "FUNNY!";
+	global.goodWords[9] = "HAPPY!";
+	global.goodWords[10] = "BUDDY!";
+	global.goodWords[11] = "SUCH A LAUGH!";
+	global.goodWords[12] = "HUGS!";
+	global.goodWords[13] = "INSPIRATION!";
+	global.goodWords[14] = "SUNSHINE!";
+	global.goodWords[15] = "STYLISH!";
+	global.goodWords[16] = "PERFECT!";
+	global.goodWords[17] = "MY WORLD!";
+	global.goodWords[18] = "SOULMATE!";
+	global.goodWords[19] = "SUPERHERO";
+
 	// Create the level data.
 	
 	var r01 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]

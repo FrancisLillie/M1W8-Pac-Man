@@ -73,8 +73,8 @@ function scr_Sprite_AddNormal(nx, ny, nz, nxh, nyh, nXScale, nYScale, nRot, nAlp
 	obj.image_yscale = nYScale;
 	obj.image_angle = nRot;
 	obj.alpha = nAlpha;
-	obj.image_index = nFrame;
 	obj.sprite_index = nSprName;
+	obj.image_index = nFrame;
 	obj.colour = nColor;
 	obj.list = SPR_NORMAL;
 	obj.inScreenSpace = nScreenSpace;

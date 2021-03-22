@@ -17,7 +17,6 @@
 
 function scr_Font_Print_Sprite(nString, nx, ny, xScale1, yScale1, xScale2, yScale2, nColour, nAlpha, nFont, nHAlign, nVAlign)
 {
-
 	// Declare locals.
 
 	var thisFont;

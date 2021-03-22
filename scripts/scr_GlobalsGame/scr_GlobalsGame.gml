@@ -35,6 +35,11 @@ function scr_GlobalsGame()
 	globalvar preGameSoundPlayed, preGameDelay;
 	
 	globalvar pillArray;
+	globalvar pillWakaDelay;
+	
+	globalvar wordArray;
+	globalvar badWords, goodWords;
+	globalvar wordDir;
 
 	//-----------------------
 	// Logo system variables.

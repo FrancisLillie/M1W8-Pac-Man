@@ -64,7 +64,7 @@ function scr_Sprite_AddSorted(nx, ny, nz, nxh, nyh, nxs, nys, nRot, nAlpha, nSpr
 
 	// Now create an object.
 
-	obj = instance_create(nx, ny, obj_Sprite);
+	obj = instance_create_depth(nx, ny, -10000, obj_Sprite);
 	obj.x = nx;
 	obj.y = ny;
 	obj.z = nz;
@@ -74,8 +74,8 @@ function scr_Sprite_AddSorted(nx, ny, nz, nxh, nyh, nxs, nys, nRot, nAlpha, nSpr
 	obj.image_yscale = nys;
 	obj.image_angle = nRot;
 	obj.alpha = nAlpha;
-	obj.image_index = nSprFrame;
 	obj.sprite_index = nSprName;
+	obj.image_index = nSprFrame;
 	obj.colour = nCol;
 	obj.list = SPR_SORTED;
 	obj.inScreenSpace = nScreen;

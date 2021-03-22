@@ -12,6 +12,10 @@ function scr_PillsInitialise()
 	
 	var xLoop, yLoop;
 	var pillCount;
+	
+	// Set sound delay to 0.
+	
+	global.pillWakaDelay = 0;
 		
 	// Now remove dots and pills.
 
