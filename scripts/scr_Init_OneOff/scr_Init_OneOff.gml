@@ -97,7 +97,14 @@ function scr_Init_OneOff()
 	global.goodWords[17] = "MY WORLD!";
 	global.goodWords[18] = "SOULMATE!";
 	global.goodWords[19] = "SUPERHERO";
-
+	
+	// Initialise the ghosts.
+	
+	global.ghostArray[0] = instance_create_depth(0, 0, 0, obj_Ghost);
+	global.ghostArray[1] = instance_create_depth(0, 0, 0, obj_Ghost);
+	global.ghostArray[2] = instance_create_depth(0, 0, 0, obj_Ghost);
+	global.ghostArray[3] = instance_create_depth(0, 0, 0, obj_Ghost);
+	
 	// Create the level data.
 	
 	var r01 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -179,4 +186,8 @@ function scr_Init_OneOff()
 		global.levelMaster[34, xLoop] = r35[xLoop];
 		global.levelMaster[35, xLoop] = r36[xLoop];
 	}
+	
+	// Build the node array.
+	
+	scr_NodesInitialise();
 }

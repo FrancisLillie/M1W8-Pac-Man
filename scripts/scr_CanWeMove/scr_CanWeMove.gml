@@ -5,10 +5,11 @@
 //			-	Player y position
 //			-	X delta to check
 //			-	Y delta to check
+//			-	Ghost flag
 // Outputs	-	True for ok to move, false otherwise
 //------------------------------------------------------------------------------
 
-function scr_CanWeMove(nx, ny, dx, dy)
+function scr_CanWeMove(nx, ny, dx, dy, isGhost)
 {
 	// Declare locals.
 	
@@ -62,7 +63,17 @@ function scr_CanWeMove(nx, ny, dx, dy)
 
 	// Get collision sum.
 		
-	collSum += global.levelData[cy0, cx0];
+	if (isGhost)
+	{
+		if (global.levelData[cy0, cx0] != 4)
+		{
+			collSum += global.levelData[cy0, cx0];
+		}
+	}
+	else
+	{
+		collSum += global.levelData[cy0, cx0];
+	}
 	
 	// Return a value.
 	

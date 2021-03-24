@@ -17,7 +17,12 @@ function scr_PreGameUpdate()
 	}
 	else if (!global.fadeActive && global.gameState == GS_PREGAME && global.preGameSoundPlayed)
 	{
-		if (++global.preGameDelay >= (room_speed * 4.2))
+		++global.preGameDelay;
+		if (global.preGameDelay >= (room_speed * 2.1) && global.preGamePhase == 0)
+		{
+			global.preGamePhase = 1;
+		}
+		else if (global.preGameDelay >= (room_speed * 4.2) && global.preGamePhase == 1)
 		{
 			global.gameState = GS_GAME;
 			global.preGameDelay = 0;

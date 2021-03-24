@@ -37,10 +37,10 @@ function scr_PlayerUpdate()
 	
 	// Move the player if it doesn't involve a collision.
 
-	dx = global.playerObj.dx * DEFAULT_SPEED;
-	dy = global.playerObj.dy * DEFAULT_SPEED;
+	dx = global.playerObj.dx * DEFAULT_SPEED * global.playerObj.speedMult;
+	dy = global.playerObj.dy * DEFAULT_SPEED * global.playerObj.speedMult;
 	
-	if (scr_CanWeMove(tObj.x + dx, tObj.y + dy, tObj.dx, tObj.dy) == 0)
+	if (scr_CanWeMove(tObj.x + dx, tObj.y + dy, tObj.dx, tObj.dy, false) == 0)
 	{
 		global.playerObj.x += dx;
 		global.playerObj.y += dy;

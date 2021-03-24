@@ -38,6 +38,7 @@ function scr_ProcessGame()
 	scr_OverlaysUpdate();
 	scr_PillsUpdate();
 	scr_WordsUpdate();
+	scr_GhostsUpdate()
 
 	//------------------------------------------------------------------------------
 	// Game logic with no render.
@@ -52,6 +53,7 @@ function scr_ProcessGame()
 	scr_OverlaysRender();
 	scr_PillsRender();
 	scr_WordsRender();
+	scr_GhostsRender();
 	
 	//------------------------------------------------------------------------------
 	// Collision detection.

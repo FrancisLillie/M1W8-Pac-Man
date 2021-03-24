@@ -90,4 +90,25 @@ function scr_Sprite_Render()
 	// Draw the zones.
 
 	scr_Zone_Draw();
+	
+	// Draw grid lines.
+	
+	/*var xLoop, yLoop;
+	draw_set_color(c_green);
+	for (xLoop = 0; xLoop < room_width; xLoop += 32)
+	{
+		draw_line(xLoop, 0, xLoop, room_height - 1);
+	}
+	for (yLoop = 0; yLoop < room_height; yLoop += 32)
+	{
+		draw_line(0, yLoop, room_width - 1, yLoop);
+	}
+	
+	// Draw the nodes.
+	
+	draw_set_color(c_yellow)
+	for (xLoop = 0; xLoop < array_length_1d(global.nodeArray); xLoop++)
+	{
+		draw_rectangle(global.nodeArray[xLoop].cx * 32, global.nodeArray[xLoop].cy * 32, (global.nodeArray[xLoop].cx * 32) + 31, (global.nodeArray[xLoop].cy * 32) + 31, true);
+	}*/
 }

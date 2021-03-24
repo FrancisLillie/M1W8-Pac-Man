@@ -117,9 +117,17 @@ function scr_PillsUpdate()
 				{
 					scr_WordsAdd(tObj.x, tObj.y, true);
 				}
-				else
+				else if (tObj.pillType == PILL_BAD)
 				{
 					scr_WordsAdd(tObj.x, tObj.y, false);
+					global.playerObj.speedMult -= 0.05;
+					if (global.playerObj.speedMult <= 0)
+					{
+						global.playerObj.speedMult = 0;
+					}
+				}
+				else if (tObj.pillType == PILL_SEROTONIN)
+				{
 				}
 			}
 		}

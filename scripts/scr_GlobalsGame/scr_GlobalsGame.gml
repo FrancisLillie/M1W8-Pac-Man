@@ -22,6 +22,7 @@ function scr_GlobalsGame()
 
 	globalvar nextGameState;
 	globalvar gameState, gameType;
+	globalvar preGamePhase;
 	
 	globalvar playerObj;
 	
@@ -40,6 +41,10 @@ function scr_GlobalsGame()
 	globalvar wordArray;
 	globalvar badWords, goodWords;
 	globalvar wordDir;
+	
+	globalvar ghostArray;
+
+	globalvar nodeArray;
 
 	//-----------------------
 	// Logo system variables.

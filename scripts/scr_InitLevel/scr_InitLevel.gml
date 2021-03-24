@@ -25,6 +25,8 @@ function scr_InitLevel(nLevel, nStart)
 	global.Level = nLevel;
 
 	global.gameState = GS_PREGAME;
+	global.preGamePhase = 0;
+	global.preGameDelay = 0
 
 	// Things to do if this is a true start.
 
@@ -50,9 +52,14 @@ function scr_InitLevel(nLevel, nStart)
 	global.playerObj.dy = 0;
 	global.playerObj.animFrameIndex = 2;
 	global.playerObj.moving = false;
+	global.playerObj.speedMult = 1;
 	
 	global.playerScore = 0;
 	global.highScore = 0;
+	
+	// Set up ghosts.
+	
+	scr_GhostsInitialise();
 	
 	// Set up anim tables.
 	

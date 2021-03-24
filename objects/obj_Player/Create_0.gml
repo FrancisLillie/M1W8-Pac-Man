@@ -10,3 +10,4 @@ dx = 0;
 dy = 0;
 animFrameIndex = 0;
 moving = false;
+speedMult = 1;

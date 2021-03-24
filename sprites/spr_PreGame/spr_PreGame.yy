@@ -10,12 +10,12 @@
   "bbox_left": 4,
   "bbox_right": 319,
   "bbox_top": 0,
-  "bbox_bottom": 219,
+  "bbox_bottom": 107,
   "HTile": false,
   "VTile": false,
   "For3D": false,
   "width": 320,
-  "height": 224,
+  "height": 112,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,9 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"31a843b4-ab75-46b1-8ed6-8443a3fe07b9","path":"sprites/spr_PreGame/spr_PreGame.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"31a843b4-ab75-46b1-8ed6-8443a3fe07b9","path":"sprites/spr_PreGame/spr_PreGame.yy",},"LayerId":{"name":"3d806c7b-469b-4907-8ded-5d1ffb9a16fe","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"spr_PreGame","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","name":"31a843b4-ab75-46b1-8ed6-8443a3fe07b9","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"14e5ef5c-5618-4cd9-90dd-b83cacfd74bf","path":"sprites/spr_PreGame/spr_PreGame.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"14e5ef5c-5618-4cd9-90dd-b83cacfd74bf","path":"sprites/spr_PreGame/spr_PreGame.yy",},"LayerId":{"name":"987aa7bd-b3ea-4de8-96a9-71752d3a673d","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_PreGame","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","name":"14e5ef5c-5618-4cd9-90dd-b83cacfd74bf","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"e6be592f-ca47-41b4-8442-02917553aac6","path":"sprites/spr_PreGame/spr_PreGame.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"e6be592f-ca47-41b4-8442-02917553aac6","path":"sprites/spr_PreGame/spr_PreGame.yy",},"LayerId":{"name":"987aa7bd-b3ea-4de8-96a9-71752d3a673d","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_PreGame","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","name":"e6be592f-ca47-41b4-8442-02917553aac6","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_PreGame","path":"sprites/spr_PreGame/spr_PreGame.yy",},
@@ -36,12 +39,13 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 1.0,
+    "length": 2.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"e4e81ac2-6ef6-43b3-84ef-cdbc7176161f","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"31a843b4-ab75-46b1-8ed6-8443a3fe07b9","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"68c55d17-f0c0-42e5-a252-04cba7347e26","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"14e5ef5c-5618-4cd9-90dd-b83cacfd74bf","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"d0d699f8-029e-4a23-82d6-ffc3e466ae4c","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"e6be592f-ca47-41b4-8442-02917553aac6","path":"sprites/spr_PreGame/spr_PreGame.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -55,7 +59,7 @@
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
     "xorigin": 160,
-    "yorigin": 112,
+    "yorigin": 56,
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_PreGame","path":"sprites/spr_PreGame/spr_PreGame.yy",},
@@ -65,7 +69,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"3d806c7b-469b-4907-8ded-5d1ffb9a16fe","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"987aa7bd-b3ea-4de8-96a9-71752d3a673d","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "Sprites",

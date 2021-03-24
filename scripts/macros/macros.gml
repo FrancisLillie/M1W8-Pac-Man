@@ -35,4 +35,14 @@ function macros()
 	#macro DEFAULT_SPEED 3.6
 	
 	#macro MAX_WORDS 32
+	
+	#macro MODE_SCATTER 0
+	#macro MODE_CHASE 1
+	#macro MODE_FRIGHTENED 2
+	#macro MODE_DEAD 3
+	
+	#macro MIN_SCATTER_TIME (3 * room_speed)
+	#macro MAX_SCATTER_TIME (7 * room_speed)
+	#macro MIN_CHASE_TIME (10 * room_speed)
+	#macro MAX_CHASE_TIME (30 * room_speed)
 }
