@@ -31,17 +31,12 @@ function scr_PillsRender()
 		{
 			if (tObj.pillType != PILL_SEROTONIN)
 			{
-				if (tObj.pillFrame != 0)
-				{
-					wait = true;
-				}
 				scr_Sprite_AddSorted(tObj.x, tObj.y, 50, 0, 0, 1, 1, 0, 1, tObj.pillFrame, spr_Pills1, c_white, true, false, false);
 			}
 			else
 			{
+				scr_Sprite_AddSorted(tObj.x, tObj.y, 50, 0, 0, 1, 1, 0, 1, 0, spr_PowerPill, c_white, true, false, false);
 			}
 		}
 	}
-	
-	
 }

@@ -104,9 +104,10 @@ function scr_GhostsUpdate()
 
 			// Handle the mode change timer.
 		
+			tObj.gModeTimer--;
 			if (tObj.gMode == MODE_SCATTER || tObj.gMode == MODE_CHASE)
 			{
-				if (--tObj.gModeTimer <= 0)
+				if (tObj.gModeTimer <= 0)
 				{
 					if (tObj.gMode == MODE_SCATTER)
 					{
@@ -129,7 +130,19 @@ function scr_GhostsUpdate()
 					}
 				}
 			}
-			
+			else if (tObj.gMode == MODE_FRIGHTENED)
+			{
+				if (tObj.gModeTimer <= 0)
+				{
+					tObj.gMode = MODE_SCATTER;
+					tObj.gModeTimer = irandom_range(MIN_SCATTER_TIME, MAX_SCATTER_TIME);
+					nodeIndex = irandom_range(0, array_length_1d(global.nodeArray) - 1)
+					tObj.tcx = global.nodeArray[nodeIndex].cx;
+					tObj.tcy = global.nodeArray[nodeIndex].cy;;
+					tObj.ncx = tObj.cx;
+					tObj.ncy = tObj.cy;
+				}
+			}
 
 			// Handle movement.
 		
@@ -142,8 +155,7 @@ function scr_GhostsUpdate()
 					scr_GhostActChase(tObj);
 					break;
 				case MODE_FRIGHTENED:
-					scr_GhostActScatter(tObj);
-					//scr_GhostActFrightened(tObj);
+					scr_GhostActFrightened(tObj);
 					break;
 				case MODE_DEAD:
 					scr_GhostActScatter(tObj);

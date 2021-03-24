@@ -18,6 +18,9 @@ function scr_PillsUpdate()
 	var dx, dy, dist;
 	var changedState;
 	var count, newBadIndex;
+	var nodeIndex;
+	
+	var ghostLoop, ghostObj;
 	
 	// Intitialisation.
 	
@@ -128,6 +131,20 @@ function scr_PillsUpdate()
 				}
 				else if (tObj.pillType == PILL_SEROTONIN)
 				{
+					scr_WordsAdd(tObj.x, tObj.y, true);
+					global.playerObj.speedMult = 1;
+					for (ghostLoop = 0; ghostLoop < 4; ghostLoop++)
+					{
+						ghostObj = global.ghostArray[ghostLoop];
+						if (ghostObj.gMode != MODE_DEAD)
+						{
+							ghostObj.gMode = MODE_FRIGHTENED;
+							nodeIndex = irandom_range(0, array_length_1d(global.nodeArray) - 1);
+							ghostObj.tcx = global.nodeArray[nodeIndex].cx;
+							ghostObj.tcy = global.nodeArray[nodeIndex].cy;
+							ghostObj.gModeTimer = TIME_FRIGHTENED;
+						}
+					}
 				}
 			}
 		}

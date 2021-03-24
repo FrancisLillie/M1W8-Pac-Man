@@ -13,6 +13,7 @@
     {"id":{"name":"__background_get_element","path":"scripts/__background_get_element/__background_get_element.yy",},"order":1,},
     {"id":{"name":"draw_background_ext","path":"scripts/draw_background_ext/draw_background_ext.yy",},"order":3,},
     {"id":{"name":"__background_get_internal","path":"scripts/__background_get_internal/__background_get_internal.yy",},"order":5,},
+    {"id":{"name":"spr_PowerPill","path":"sprites/spr_PowerPill/spr_PowerPill.yy",},"order":27,},
     {"id":{"name":"scr_GhostsUpdate","path":"scripts/scr_GhostsUpdate/scr_GhostsUpdate.yy",},"order":0,},
     {"id":{"name":"__background_set","path":"scripts/__background_set/__background_set.yy",},"order":7,},
     {"id":{"name":"__background_set_element","path":"scripts/__background_set_element/__background_set_element.yy",},"order":9,},

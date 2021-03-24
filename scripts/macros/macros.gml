@@ -45,4 +45,5 @@ function macros()
 	#macro MAX_SCATTER_TIME (7 * room_speed)
 	#macro MIN_CHASE_TIME (10 * room_speed)
 	#macro MAX_CHASE_TIME (30 * room_speed)
+	#macro TIME_FRIGHTENED (10 * room_speed)
 }

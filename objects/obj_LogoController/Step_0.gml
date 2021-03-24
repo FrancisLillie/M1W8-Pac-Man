@@ -23,11 +23,16 @@ if (fadeActive = false)
     // Increment the timer.
     
     logoDelay += 1;
-    if (logoDelay = (room_speed * 2))
+    if (logoDelay = (room_speed * 30))
     {
         logoDelay = 0;
         scr_Fade_InitDown(0.5);
     }
+	if (keyboard_check_pressed(vk_enter))
+	{
+        logoDelay = 0;
+        scr_Fade_InitDown(0.5);
+	}
 }
 
 // If we were fading but not now we've just finished.
