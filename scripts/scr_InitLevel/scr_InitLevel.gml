@@ -7,7 +7,7 @@
 // Notes    -   Initialises a level
 //------------------------------------------------------------------------------
 
-function scr_InitLevel(nLevel, nStart)
+function scr_InitLevel(nLevel, nStart, setPills)
 {
 	// Declare locals.
 	
@@ -18,7 +18,7 @@ function scr_InitLevel(nLevel, nStart)
 
 	global.SettingUp = true;
 
-	global.masterVolume = 0;
+	//global.masterVolume = 0;
 
 	// Miscellaneous variable initialisation.
 
@@ -26,23 +26,19 @@ function scr_InitLevel(nLevel, nStart)
 
 	global.gameState = GS_PREGAME;
 	global.preGamePhase = 0;
-	global.preGameDelay = 0
-
-	// Things to do if this is a true start.
-
-	if (nStart)
-	{
-		global.playerScore = 0;
-		global.Level = 1;
-	}
+	global.preGameDelay = 0;
+	global.postGameDelay = 0;
 
 	// Set up the player.
 
-	if (global.playerObj != 0)
+	if (nStart)
 	{
-		instance_destroy(global.playerObj);
+		if (global.playerObj != 0)
+		{
+			instance_destroy(global.playerObj);
+		}
+		global.playerObj = instance_create_depth(0, 0, 0, obj_Player);
 	}
-	global.playerObj = instance_create_depth(0, 0, 0, obj_Player);
 	
 	global.playerObj.cx = 14;
 	global.playerObj.cy = 26;
@@ -54,9 +50,17 @@ function scr_InitLevel(nLevel, nStart)
 	global.playerObj.moving = false;
 	global.playerObj.speedMult = 1;
 	
-	global.playerScore = 0;
-	global.highScore = 0;
-	
+	// Things to do if this is a true start.
+
+	if (nStart)
+	{
+		global.Level = 1;
+		global.playerObj.pacLives = 3;
+
+		global.playerScore = 0;
+		global.highScore = 0;
+	}
+
 	// Set up ghosts.
 	
 	scr_GhostsInitialise();
@@ -77,16 +81,19 @@ function scr_InitLevel(nLevel, nStart)
 	
 	// Set up the level from the master data.
 	
-	pillsFound = 0;
-	for (yLoop = 0; yLoop < 36; yLoop++)
+	if (setPills)
 	{
-		for (xLoop = 0; xLoop < 28; xLoop++)
+		pillsFound = 0;
+		for (yLoop = 0; yLoop < 36; yLoop++)
 		{
-			global.levelData[yLoop, xLoop] = global.levelMaster[yLoop, xLoop];
-			if (global.levelData[yLoop, xLoop] == 2 || global.levelData[yLoop, xLoop] == 3)
+			for (xLoop = 0; xLoop < 28; xLoop++)
 			{
-				global.pillArray[pillsFound] = instance_create_depth(-64, -64, -10000, obj_Pill);
-				pillsFound++;
+				global.levelData[yLoop, xLoop] = global.levelMaster[yLoop, xLoop];
+				if (global.levelData[yLoop, xLoop] == 2 || global.levelData[yLoop, xLoop] == 3)
+				{
+					global.pillArray[pillsFound] = instance_create_depth(-64, -64, -10000, obj_Pill);
+					pillsFound++;
+				}
 			}
 		}
 	}
@@ -100,7 +107,7 @@ function scr_InitLevel(nLevel, nStart)
 
 	// Initialise the pills.
 	
-	scr_PillsInitialise();
+	if (setPills) scr_PillsInitialise();
 	
 	// Initialise the words.
 	
@@ -110,6 +117,7 @@ function scr_InitLevel(nLevel, nStart)
 	
 	global.preGameSoundPlayed = false;
 	global.preGameDelay = 0;
+	global.postGameDelay = 0;
 	
 	// Make sure a paint is now possible.
 

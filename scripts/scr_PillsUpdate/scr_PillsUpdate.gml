@@ -104,7 +104,7 @@ function scr_PillsUpdate()
 			dy = global.playerObj.y - tObj.y;
 			dist = sqrt((dx * dx) + (dy * dy));
 			
-			if (dist < 24)
+			if (dist < 16)
 			{
 				tObj.pillActive = false;
 				if (global.pillWakaDelay == 0)
@@ -146,6 +146,14 @@ function scr_PillsUpdate()
 						}
 					}
 				}
+				
+				// Are we complete?
+				
+				if (numActive <= 0)
+				{
+					global.gameState = GS_POSTGAME;
+					global.postGameDelay = 0;
+				}
 			}
 		}
 	}
@@ -154,7 +162,7 @@ function scr_PillsUpdate()
 	// Add a bad one if needed.
 	//-------------------------
 	
-	if (needABadOne)
+	if (needABadOne && numActive != 0)
 	{
 		newBadIndex = irandom_range(0, numEntries - 1);
 		changedState = false;

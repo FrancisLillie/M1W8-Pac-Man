@@ -16,4 +16,4 @@ scr_Font_Init(fnt_Font08, 32, 32, 32, 59, false, "");
 
 scr_Sound_Init();
 
-scr_InitLevel(1, true);
+scr_InitLevel(1, true, true);

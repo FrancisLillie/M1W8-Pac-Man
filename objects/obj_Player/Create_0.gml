@@ -3,7 +3,7 @@
 y = 0;
 x = 0;
 pacDying = false;
-pacSpeedMult = 1;
+pacLives = 0;
 cx = 0;
 cy = 0;
 dx = 0;

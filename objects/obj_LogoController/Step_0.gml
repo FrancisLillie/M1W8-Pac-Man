@@ -12,7 +12,8 @@ scr_Screen_GetAspect();
 switch (logoNum)
 {
     case 0:
-        scr_Sprite_AddNormal(0, 0, 0, 0, 0, 1, 1, 0, 1, 0, spr_Logo, c_white, true, false, false);
+        //scr_Sprite_AddNormal(room_width / 2, room_height / 2, 0, 0, 0, 1 + sin(global.gTicks / 25), 1 + cos(global.gTicks / 25), radtodeg(global.gTicks / 25), 1, 0, spr_Logo2, c_white, true, false, false);
+        scr_Sprite_AddNormal(room_width / 2, room_height / 2, 0, 0, 0, 1 + sin(global.gTicks / 25), 1 + cos(global.gTicks / 25), 0, 1, 0, spr_Logo2, c_white, true, false, false);
         break;
 }
 

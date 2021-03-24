@@ -46,4 +46,6 @@ function macros()
 	#macro MIN_CHASE_TIME (10 * room_speed)
 	#macro MAX_CHASE_TIME (30 * room_speed)
 	#macro TIME_FRIGHTENED (10 * room_speed)
+	
+	#macro COLL_RADIUS 32
 }

@@ -13,6 +13,13 @@ function scr_GhostsUpdate()
 	var iLoop, tObj;
 	var nodeIndex;
 	var dx, dy
+
+	// If we are dying then quit early.
+	
+	if (global.playerObj.pacDying || global.gameState == GS_POSTGAME)
+	{
+		return;
+	}
 	
 	//----------------------
 	// Handle the animation.
@@ -72,13 +79,20 @@ function scr_GhostsUpdate()
 				if (tObj.dy == -1) tObj.actualFrame = 6 + tObj.gFrame;
 				break;
 			case MODE_FRIGHTENED:
-				tObj.actualFrame = 0 + tObj.gFrame;
+				if (tObj.gModeTimer > (TIME_FRIGHTENED / 4))
+				{
+					tObj.actualFrame = 0 + tObj.gFrame;
+				}
+				else
+				{
+					tObj.actualFrame = 2 + tObj.gFrame;
+				}
 				break;
 			case MODE_DEAD:
 				if (tObj.dx == 1) tObj.actualFrame = 0 + tObj.gFrame;
-				if (tObj.dy == 1) tObj.actualFrame = 1 + tObj.gFrame;
-				if (tObj.dx == -1) tObj.actualFrame = 2 + tObj.gFrame;
-				if (tObj.dy == -1) tObj.actualFrame = 3 + tObj.gFrame;
+				if (tObj.dy == 1) tObj.actualFrame = 2 + tObj.gFrame;
+				if (tObj.dx == -1) tObj.actualFrame = 4 + tObj.gFrame;
+				if (tObj.dy == -1) tObj.actualFrame = 6 + tObj.gFrame;
 				break;
 		}
 	}
@@ -158,8 +172,7 @@ function scr_GhostsUpdate()
 					scr_GhostActFrightened(tObj);
 					break;
 				case MODE_DEAD:
-					scr_GhostActScatter(tObj);
-					//scr_GhostActDead(tObj);
+					scr_GhostActDead(tObj);
 					break;
 			}
 

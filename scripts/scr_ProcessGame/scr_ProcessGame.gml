@@ -34,6 +34,7 @@ function scr_ProcessGame()
 	//------------------------------------------------------------------------------
 
 	scr_PreGameUpdate();
+	scr_PostGameUpdate();
 	scr_PlayerUpdate();
 	scr_OverlaysUpdate();
 	scr_PillsUpdate();
@@ -44,11 +45,14 @@ function scr_ProcessGame()
 	// Game logic with no render.
 	//------------------------------------------------------------------------------
 
+	scr_GhostToPlayer();
+
 	//------------------------------------------------------------------------------
 	// Game rendering with matching logic.
 	//------------------------------------------------------------------------------
 
 	scr_PreGameRender();
+	scr_PostGameRender();
 	scr_PlayerRender();
 	scr_OverlaysRender();
 	scr_PillsRender();

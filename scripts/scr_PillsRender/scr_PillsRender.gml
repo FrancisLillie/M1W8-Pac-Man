@@ -11,7 +11,6 @@ function scr_PillsRender()
 	// Declare locals.
 	
 	var numEntries, iLoop;
-	var wait;
 	
 	// Intitialisation.
 	
@@ -35,7 +34,10 @@ function scr_PillsRender()
 			}
 			else
 			{
-				scr_Sprite_AddSorted(tObj.x, tObj.y, 50, 0, 0, 1, 1, 0, 1, 0, spr_PowerPill, c_white, true, false, false);
+				if ((global.gTicks & 16) == 0)
+				{
+					scr_Sprite_AddSorted(tObj.x, tObj.y, 50, 0, 0, 1, 1, 0, 1, 0, spr_PowerPill, c_white, true, false, false);
+				}
 			}
 		}
 	}

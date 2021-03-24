@@ -34,6 +34,7 @@ function scr_GlobalsGame()
 	globalvar playerScore, highScore;
 	
 	globalvar preGameSoundPlayed, preGameDelay;
+	globalvar postGameDelay;
 	
 	globalvar pillArray;
 	globalvar pillWakaDelay;

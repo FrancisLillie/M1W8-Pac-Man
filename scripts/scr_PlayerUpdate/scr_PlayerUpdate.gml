@@ -18,11 +18,35 @@ function scr_PlayerUpdate()
 	
 	// Do literally nothing for pre-game.
 	
-	if (global.gameState == GS_PREGAME)
+	if (global.gameState == GS_PREGAME || global.gameState == GS_POSTGAME)
 	{
 		tObj.animFrameIndex = 2;
 		return;
 	}
+	
+	// If we are dying then quit early.
+	
+	if (global.playerObj.pacDying)
+	{
+		tObj.frame += 0.11;
+		if (tObj.frame >= 11)
+		{
+			tObj.frame = 0;
+			tObj.pacDying = false;
+			tObj.pacLives--;
+			if (tObj.pacLives == 0)
+			{
+				global.gameState = GS_POSTGAME;
+				global.postGameDelay = 0;
+			}
+			else
+			{
+				scr_InitLevel(global.Level, false, false);
+			}
+		}
+		return;
+	}
+	
 	
 	// Update the animation frame index.
 	

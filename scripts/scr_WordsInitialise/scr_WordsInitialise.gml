@@ -12,10 +12,6 @@ function scr_WordsInitialise()
 	
 	var iLoop;
 	
-	// Random direction start.
-	
-	global.wordDir = irandom_range(0, 3);
-	
 	// Create the array of words.
 	
 	for (iLoop = 0; iLoop < MAX_WORDS; iLoop++)
